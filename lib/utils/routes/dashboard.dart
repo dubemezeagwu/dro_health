@@ -84,10 +84,10 @@ class _DashboardState extends State<Dashboard> {
                   IconBottomBar(
                       text: "Profile",
                       icon: Icons.person_pin_rounded,
-                      isSelected: _currentPageIndex == 0,
+                      isSelected: _currentPageIndex == 4,
                       onPressed: (){
                         setState(() {
-                          _currentPageIndex = 0;
+                          _currentPageIndex = 4;
                         });
                       }),
                 ],

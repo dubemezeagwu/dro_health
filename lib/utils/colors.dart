@@ -8,7 +8,9 @@ class AppColors {
   static const iconPurple = Color(0xFF9F5DE2);
   static const white = Color(0xFFFFFFFF);
   static const textColor = Color(0xFF363636);
+  static const lightTextColor = Color(0x99363636);
   static const black = Color(0xFF000000);
+  static const fadeBlack = Color(0x80000000);
   static const navBarBackground = Color(0xFFEEEBF1);
   static const navItemColor = Color(0xFF828282);
 }
