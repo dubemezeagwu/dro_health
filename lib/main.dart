@@ -1,3 +1,4 @@
+import 'package:dro_health/utils/colors.dart';
 import 'package:dro_health/utils/routes/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'DRO Health',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: AppColors.darkPurple,
+        ),
       ),
       home: Dashboard(),
     );
