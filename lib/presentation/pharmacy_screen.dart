@@ -1,3 +1,4 @@
+import 'package:dro_health/presentation/widgets/item_search.dart';
 import 'package:dro_health/utils/app_assets.dart';
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:dro_health/utils/config/size_config.dart';
@@ -42,10 +43,17 @@ class PharmacyScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: TextFormField(
+                onTap: (){
+                  showSearch(context: context, delegate: ItemSearch());
+                },
+                enableInteractiveSelection: true,
                 cursorColor: AppColors.black,
                 decoration: InputDecoration(
+                  isDense: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 5),
                     labelText: "Search",
                     labelStyle: regularWhite14,
+                    enabled: true,
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.h),
                     ),
