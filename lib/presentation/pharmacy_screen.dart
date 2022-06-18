@@ -15,61 +15,74 @@ class PharmacyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Padding(
-          padding: EdgeInsets.only(left: 24.w),
-          child: Text("Pharmacy"),
-        ),
-        centerTitle: false,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 24.w),
-            child: Icon(Icons.shopping_cart),
-          )
-        ],
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: 78.h,
-            decoration: BoxDecoration(
-                color: AppColors.darkPurple,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 120,
+            // pinned: true,
+            floating: true,
+            shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                )
+                    bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: TextFormField(
-                onTap: (){
-                  showSearch(context: context, delegate: ItemSearch());
-                },
-                enableInteractiveSelection: true,
-                cursorColor: AppColors.black,
-                decoration: InputDecoration(
-                  isDense: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 5),
-                    labelText: "Search",
-                    labelStyle: regularWhite14,
-                    enabled: true,
-                    focusedBorder: OutlineInputBorder(
+            elevation: 0,
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(right: 24.w),
+                child: Icon(Icons.shopping_cart),
+              )
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: SizedBox(
+                  height: 25,
+                  width: double.infinity,
+                  child: TextFormField(
+                    onTap: (){
+                      showSearch(context: context, delegate: ItemSearch());
+                    },
+                    enableInteractiveSelection: true,
+                    cursorColor: AppColors.black,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(vertical: 5),
+                      labelText: "Search",
+                      labelStyle: regularWhite14,
+                      enabled: true,
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.h),
-                    ),
-                    border: OutlineInputBorder(
+                      ),
+                      border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.h),
+                      ),
+                      filled: true,
+                      fillColor: AppColors.white.withOpacity(0.2),
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      prefixIcon: Icon(Icons.search),
                     ),
-                    filled: true,
-                    fillColor: AppColors.white.withOpacity(0.2),
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    prefixIcon: Icon(Icons.search),
+                  ),
                 ),
               ),
             ),
+            centerTitle: false,
+            title: Padding(
+              padding: EdgeInsets.only(left: 24.w),
+              child: Text("Pharmacy"),
+            ),
           ),
+          SliverToBoxAdapter(
+            child: Container(
+              height: 900,
+              width: 400,
+              color: Colors.green,
+            ),
+          )
         ],
-      )
+      ),
     );
   }
 }
+
+
+
