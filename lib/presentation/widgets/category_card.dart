@@ -5,23 +5,25 @@ import '../../utils/app_assets.dart';
 import '../../utils/styles.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key}) : super(key: key);
+  final String title, image;
+  const CategoryCard({
+    Key? key,
+    required this.title,
+    required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 98,
-      width: 126,
-      color: Colors.amber,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            AppAssets.supplements,
-          ),
-          Text("Headache", style: regularWhite14,)
-        ],
-      ),
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Image.asset(
+          image,
+          fit: BoxFit.fill,
+          height: 200,
+          width: 170,
+        ),
+        Text(title, style: regularWhite14,)
+      ],
     );
   }
 }

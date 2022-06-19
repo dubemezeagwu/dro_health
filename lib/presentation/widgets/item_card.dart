@@ -6,7 +6,21 @@ import 'package:flutter_svg/svg.dart';
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
 class ItemCard extends StatelessWidget {
-  const ItemCard({Key? key}) : super(key: key);
+  final String image;
+  final String title;
+  final String type;
+  final String dosage;
+  final String price;
+  final bool visible;
+  const ItemCard({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.type,
+    required this.dosage,
+    required this.price,
+    required this.visible
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +30,15 @@ class ItemCard extends StatelessWidget {
       width: 168.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.h),
-          color: Colors.amber
+          color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurStyle: BlurStyle.outer,
+            blurRadius: 4,
+
+          )
+        ]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,17 +53,20 @@ class ItemCard extends StatelessWidget {
                     topLeft: Radius.circular(11.h),
                     topRight: Radius.circular(11.h),
                   ),
-                  child: SvgPicture.asset("assets/images/doliprane2.svg", fit: BoxFit.cover,),
+                  child: Image.asset(image, fit: BoxFit.cover,),
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                child: Container(
-                  height: 19.h,
-                  width: 168.w,
-                  color: AppColors.fadeBlack,
-                  child: Center(
-                      child: Text("Requires a prescription",style: regularWhite12,)
+              Visibility(
+                visible: visible,
+                child: Positioned(
+                  bottom: 0,
+                  child: Container(
+                    height: 19.h,
+                    width: 168.w,
+                    color: AppColors.fadeBlack,
+                    child: Center(
+                        child: Text("Requires a prescription",style: regularWhite12,)
+                    ),
                   ),
                 ),
               )
@@ -52,15 +77,15 @@ class ItemCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Paracetamol", style: regularBlack16,),
+                  Text(title, style: regularBlack16,),
                   SizedBox(height: 2.h,),
                   SizedBox(
-                    width: 103.w,
+                    width: 110.w,
                     height: 17.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Tablet", style: regularLightBlack14,),
+                        Text(type, style: regularLightBlack14,),
                         Container(
                           height: 3.h,
                           width: 3.w,
@@ -69,12 +94,12 @@ class ItemCard extends StatelessWidget {
                               color: AppColors.textColor
                           ),
                         ),
-                        Text("500mg", style: regularLightBlack14,)
+                        Text(dosage, style: regularLightBlack14,)
                       ],
                     ),
                   ),
                   SizedBox(height: 9.h,),
-                  Text("N350.00", style: boldBlack18,)
+                  Text("N${price}", style: boldBlack18,)
                 ],
               )
           ),

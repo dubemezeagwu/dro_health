@@ -1,10 +1,11 @@
-import 'package:dro_health/presentation/widgets/custom_app_button.dart';
+import 'package:dro_health/presentation/widgets/custom_purple_button.dart';
 import 'package:dro_health/presentation/widgets/item_card.dart';
 import 'package:dro_health/presentation/widgets/product_details_widget.dart';
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../data/model/item_model.dart';
 import '../utils/colors.dart';
 import '../utils/config/size_config.dart';
 import '../utils/styles.dart';
@@ -52,11 +53,10 @@ class CommunityScreen extends StatelessWidget {
                       Container(
                         height: 170.h,
                         width: 170.w,
-                        color: Colors.amber,
-                        child: SvgPicture.asset(""),
+                        child: Image.asset("assets/images/paracetamol.png"),
                       ),
                       SizedBox(height: 13.h,),
-                      Text("Emzor Paracetamol"),
+                      Text("Emzor Paracetamol",style: boldBlack20,),
                       SizedBox(height: 8.h,),
                       SizedBox(
                         height: 22.h,
@@ -64,7 +64,7 @@ class CommunityScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Tablet", style: regularLightBlack14,),
+                            Text("Tablet", style: regularLightBlack18,),
                             Container(
                               height: 1.h,
                               width: 2.w,
@@ -73,7 +73,7 @@ class CommunityScreen extends StatelessWidget {
                                   color: AppColors.textColor
                               ),
                             ),
-                            Text("500mg", style: regularLightBlack14,)
+                            Text("500mg", style: regularLightBlack18,)
                           ],
                         ),
                       ),
@@ -92,13 +92,14 @@ class CommunityScreen extends StatelessWidget {
                                   color: AppColors.white,
                                   border: Border.all(color: AppColors.lightTextColor,width: 1)
                               ),
+                              child: Image.asset("assets/images/emzor_logo.png"),
                             ),
                             SizedBox(width: 10.w),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("SOLD BY"),
-                                Text("Emzor Pharmaceuticals"),
+                                Text("SOLD BY",style: regularTeal10,),
+                                Text("Emzor Pharmaceuticals", style: regularTeal14,),
                               ],
                             ),
                             Spacer(),
@@ -107,9 +108,15 @@ class CommunityScreen extends StatelessWidget {
                               width: 32.w,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(11.h),
-                                  color: AppColors.navItemColor
+                                  color: AppColors.lightIconPurple
                               ),
-                              child: Icon(Icons.heart_broken,size: 20,),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: SvgPicture.asset(
+                                    "assets/images/heart.svg",
+                                  color: AppColors.iconPurple,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -149,7 +156,7 @@ class CommunityScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 15.w),
-                            Text("Pack(s)"),
+                            Text("Pack(s)",style: regularLightBlack14,),
                             Spacer(),
                             Container(
                               height: 39.h,
@@ -190,39 +197,45 @@ class CommunityScreen extends StatelessWidget {
                       SizedBox(height: 34.h,),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("PRODUCT DETAILS"),
+                        child: Text("PRODUCT DETAILS",style: regularTeal14,),
                       ),
-                      SizedBox(height: 21.h,),
                       SizedBox(
-                        height: 100,
+                        height: 150,
                         child: GridView(
+                          physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               mainAxisExtent: 50
                           ),
                           children: const <Widget>[
                             ProductDetailsWidget(
-                              icon: "",
+                              icon: "assets/icons/double_pill.svg",
                               title: "PACK SIZE",
                               description: "8 X 12 tablets (96)",
                             ),
-                            ProductDetailsWidget(
-                              icon: "",
-                              title: "PRODUCT ID",
-                              description: "PRO23648856",
+                            Padding(
+                              padding: EdgeInsets.only(right: 12.0),
+                              child: ProductDetailsWidget(
+                                icon: "assets/icons/qr_code.svg",
+                                title: "PRODUCT ID",
+                                description: "PRO23648856",
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(right: 8.0),
+                              padding: EdgeInsets.only(right: 24.0),
                               child: ProductDetailsWidget(
-                                icon: "",
+                                icon: "assets/icons/pill.svg",
                                 title: "CONSTITUENTS",
                                 description: "Paracetamol",
                               ),
                             ),
-                            ProductDetailsWidget(
-                              icon: "",
-                              title: "DISPENSED IN",
-                              description: "Packs",
+                            Padding(
+                              padding: EdgeInsets.only(right: 24.0),
+                              child: ProductDetailsWidget(
+                                icon: "assets/icons/prescription_bottle.svg",
+                                title: "DISPENSED IN",
+                                description: "Packs",
+                              ),
                             ),
                           ],
                         ),
@@ -233,12 +246,12 @@ class CommunityScreen extends StatelessWidget {
                       SizedBox(
                         height: 42,
                         width: 325,
-                        child: Text("1 pack of Emzor Paracetamol (500mg) contains 8 units of 12 tablets."),
+                        child: Text("1 pack of Emzor Paracetamol (500mg) contains 8 units of 12 tablets.", style: regularLightBlack14,),
                       ),
                       SizedBox(height: 30.h,),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Similar Products"),
+                        child: Text("Similar Products",style: boldBlack18,),
                       ),
                       SizedBox(height: 30.h,),
                       SizedBox(
@@ -249,7 +262,14 @@ class CommunityScreen extends StatelessWidget {
                             itemBuilder: (context, index){
                               return Padding(
                                 padding: EdgeInsets.only(right: 14.w),
-                                child: ItemCard(),
+                                child: ItemCard(
+                                  title: sampleItems[index].title,
+                                  dosage: sampleItems[index].dosage,
+                                  visible: sampleItems[index].requiresPrescription,
+                                  image: sampleItems[index].image,
+                                  type: sampleItems[index].type,
+                                  price: sampleItems[index].price.toString(),
+                                ),
                               );
                             }
                         ),
@@ -257,7 +277,7 @@ class CommunityScreen extends StatelessWidget {
                       SizedBox(
                         height: 44.h,
                       ),
-                      CustomAppButton()
+                      CustomPurpleButton()
                     ],
                   ),
                 )

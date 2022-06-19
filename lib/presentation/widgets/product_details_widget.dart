@@ -1,5 +1,6 @@
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:dro_health/utils/config/size_config.dart';
+import 'package:dro_health/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,7 +19,6 @@ class ProductDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Container(
-      color: Colors.green,
       margin: EdgeInsets.only(top: 5,right: 5,left: 5,bottom: 5),
       height: 40.h,
       width: 175.w,
@@ -27,21 +27,19 @@ class ProductDetailsWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            height: 40.h,
-            width: 40.w,
+            height: 30.h,
+            width: 30.w,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.white,
-                border: Border.all(color: AppColors.lightTextColor,width: 1)
             ),
-            child: SvgPicture.asset(icon),
+            child: SvgPicture.asset(icon, color: AppColors.iconPurple,),
           ),
           SizedBox(width: 10.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title),
-              Text(description),
+              Text(title, style: regularTeal10,),
+              Text(description, style: regularTeal14,),
             ],
           ),
         ],

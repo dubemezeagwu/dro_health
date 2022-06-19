@@ -35,6 +35,14 @@ TextStyle regularBlack16 = GoogleFonts.roboto(
   ),
 );
 
+TextStyle regularLightBlack18 = GoogleFonts.roboto(
+  textStyle: TextStyle(
+      fontSize: 18.sp,
+      color: AppColors.lightTextColor,
+      fontWeight: FontWeight.w400
+  ),
+);
+
 TextStyle regularLightBlack14 = GoogleFonts.roboto(
   textStyle: TextStyle(
       fontSize: 14.sp,
@@ -47,6 +55,30 @@ TextStyle boldBlack18 = GoogleFonts.roboto(
   textStyle: TextStyle(
       fontSize: 18.sp,
       color: AppColors.textColor,
+      fontWeight: FontWeight.w700
+  ),
+);
+
+TextStyle boldBlack20 = GoogleFonts.roboto(
+  textStyle: TextStyle(
+      fontSize: 20.sp,
+      color: AppColors.textColor,
+      fontWeight: FontWeight.w700
+  ),
+);
+
+TextStyle regularTeal10 = GoogleFonts.roboto(
+  textStyle: TextStyle(
+      fontSize: 10.sp,
+      color: AppColors.teal,
+      fontWeight: FontWeight.w400
+  ),
+);
+
+TextStyle regularTeal14 = GoogleFonts.roboto(
+  textStyle: TextStyle(
+      fontSize: 14.sp,
+      color: AppColors.teal,
       fontWeight: FontWeight.w700
   ),
 );
