@@ -1,5 +1,6 @@
 import 'package:dro_health/utils/colors.dart';
 import 'package:dro_health/utils/routes/dashboard.dart';
+import 'package:dro_health/utils/routes/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      onGenerateRoute: generateRoute,
       debugShowCheckedModeBanner: false,
       title: 'DRO Health',
       theme: ThemeData(

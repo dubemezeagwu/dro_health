@@ -1,5 +1,6 @@
 import 'package:dro_health/data/model/category_model.dart';
 import 'package:dro_health/data/model/item_model.dart';
+import 'package:dro_health/presentation/all_categories_screen.dart';
 import 'package:dro_health/presentation/widgets/category_card.dart';
 import 'package:dro_health/presentation/widgets/custom_app_button.dart';
 import 'package:dro_health/presentation/widgets/item_card.dart';
@@ -7,6 +8,7 @@ import 'package:dro_health/presentation/widgets/item_search.dart';
 import 'package:dro_health/utils/app_assets.dart';
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:dro_health/utils/config/size_config.dart';
+import 'package:dro_health/utils/routes/router.dart';
 import 'package:dro_health/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -120,7 +122,9 @@ class PharmacyScreen extends StatelessWidget {
                     children: [
                       Text("CATEGORIES",style: regularLightBlack18,),
                       TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            routeTo(context, AllCategoriesScreen());
+                          },
                           child: Text(
                             "VIEW ALL", style: TextStyle(
                             color: AppColors.iconPurple
