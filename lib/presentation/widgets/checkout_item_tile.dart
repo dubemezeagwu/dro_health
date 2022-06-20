@@ -3,12 +3,22 @@ import 'package:dro_health/utils/config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../data/model/item_model.dart';
 import '../../utils/colors.dart';
 import '../../utils/styles.dart';
 
-class CheckoutItemTile extends StatelessWidget {
-  const CheckoutItemTile({Key? key}) : super(key: key);
+class CheckoutItemTile extends StatefulWidget {
+  final Item item;
+  const CheckoutItemTile({
+    Key? key,
+    required this.item
+  }) : super(key: key);
 
+  @override
+  State<CheckoutItemTile> createState() => _CheckoutItemTileState();
+}
+
+class _CheckoutItemTileState extends State<CheckoutItemTile> {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
@@ -23,7 +33,7 @@ class CheckoutItemTile extends StatelessWidget {
               height: 80.h,
               width: 80.w,
               color: Colors.green,
-              child: SvgPicture.asset("")
+              child: Image.asset(widget.item.image!)
           ),
           SizedBox(
             width: 14.w,
@@ -31,7 +41,7 @@ class CheckoutItemTile extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Paracetamol"),
+              Text(widget.item.title!),
               SizedBox(height: 8.h,),
               SizedBox(
                 width: 103.w,
@@ -39,7 +49,7 @@ class CheckoutItemTile extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Tablet", style: regularLightBlack14,),
+                    Text(widget.item.type!, style: regularLightBlack14,),
                     Container(
                       height: 3.h,
                       width: 3.w,
@@ -48,12 +58,12 @@ class CheckoutItemTile extends StatelessWidget {
                           color: AppColors.textColor
                       ),
                     ),
-                    Text("500mg", style: regularLightBlack14,)
+                    Text(widget.item.dosage!, style: regularLightBlack14,)
                   ],
                 ),
               ),
               SizedBox(height: 9.h,),
-              Text("N350.00", style: boldBlack18,)
+              Text(widget.item.price.toString(), style: boldBlack18,)
             ],
           ),
           SizedBox(
@@ -93,7 +103,10 @@ class CheckoutItemTile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(Icons.restore_from_trash),
+                  GestureDetector(
+                    onTap: (){},
+                      child: Icon(Icons.restore_from_trash)
+                  ),
                   Text("Remove", style: regularPurple12,)
                 ],
               )

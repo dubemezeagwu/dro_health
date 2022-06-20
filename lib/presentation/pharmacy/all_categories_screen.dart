@@ -3,7 +3,7 @@ import 'package:dro_health/presentation/widgets/category_card.dart';
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/config/size_config.dart';
+import '../../utils/config/size_config.dart';
 
 class AllCategoriesScreen extends StatelessWidget {
   const AllCategoriesScreen({Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class AllCategoriesScreen extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                         mainAxisExtent: 160,
-                        crossAxisSpacing: 30
+                        crossAxisSpacing: 3
                       ),
                       itemBuilder: (context, index){
                         return CategoryCard(

@@ -1,7 +1,7 @@
 import 'package:dro_health/presentation/community_screen.dart';
 import 'package:dro_health/presentation/doctors_screen.dart';
 import 'package:dro_health/presentation/home_screen.dart';
-import 'package:dro_health/presentation/pharmacy_screen.dart';
+import 'package:dro_health/presentation/pharmacy/pharmacy_screen.dart';
 import 'package:dro_health/presentation/profile_screen.dart';
 import 'package:dro_health/utils/config/extensions.dart';
 import 'package:dro_health/utils/config/size_config.dart';

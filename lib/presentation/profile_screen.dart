@@ -11,33 +11,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          margin: EdgeInsets.only(top: 5,right: 5,left: 5,bottom: 5),
-          height: 40.h,
-          width: 175.w,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 40.h,
-                width: 40.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: SvgPicture.asset("assets/images/pill.svg", color: AppColors.iconPurple,),
-              ),
-              SizedBox(width: 10.w),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Jams"),
-                  Text("description"),
-                ],
-              ),
-            ],
-          ),
-        )
+        child: Text("Profile Screen")
       ),
     );
   }
