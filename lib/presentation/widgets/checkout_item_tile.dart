@@ -23,16 +23,15 @@ class _CheckoutItemTileState extends State<CheckoutItemTile> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Container(
-      padding: EdgeInsets.only(top: 24.h,bottom: 24.h, right: 7.h),
-      height: 125.h,
+      padding: EdgeInsets.only(top: 24.h,bottom: 24.h, right: 24.h),
+      height: 127.h,
       width: 340.h,
-      color: Colors.amber,
+      color: AppColors.white,
       child: Row(
         children: [
           Container(
               height: 80.h,
               width: 80.w,
-              color: Colors.green,
               child: Image.asset(widget.item.image!)
           ),
           SizedBox(
@@ -44,7 +43,7 @@ class _CheckoutItemTileState extends State<CheckoutItemTile> {
               Text(widget.item.title!),
               SizedBox(height: 8.h,),
               SizedBox(
-                width: 103.w,
+                width: 110.w,
                 height: 17.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,9 +65,10 @@ class _CheckoutItemTileState extends State<CheckoutItemTile> {
               Text(widget.item.price.toString(), style: boldBlack18,)
             ],
           ),
-          SizedBox(
-            width: 66.w,
-          ),
+          // SizedBox(
+          //   width: 66.w,
+          // ),
+          Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -105,7 +105,7 @@ class _CheckoutItemTileState extends State<CheckoutItemTile> {
                 children: [
                   GestureDetector(
                     onTap: (){},
-                      child: Icon(Icons.restore_from_trash)
+                      child: Icon(Icons.restore_from_trash, color: AppColors.iconPurple,)
                   ),
                   Text("Remove", style: regularPurple12,)
                 ],

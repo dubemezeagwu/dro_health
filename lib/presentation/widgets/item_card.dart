@@ -29,7 +29,7 @@ class ItemCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container (
-        height: 222.h,
+        height: 225.h,
         width: 168.w,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(11.h),

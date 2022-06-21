@@ -54,33 +54,35 @@ class PharmacyScreen extends StatelessWidget {
               ],
               flexibleSpace: FlexibleSpaceBar(
                 title: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: SizedBox(
-                    height: 25,
-                    width: double.infinity,
-                    child: TextFormField(
-                      onTap: (){
-                        showSearch(context: context, delegate: ItemSearch());
-                      },
-                      enableInteractiveSelection: true,
-                      cursorColor: AppColors.black,
-                      cursorHeight: 8.h,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.symmetric(vertical: 5),
-                        labelText: "Search",
-                        labelStyle: regularWhite12,
-                        enabled: true,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: Expanded(
+                    child: Container(
+                      height: 25,
+                      width: 400,
+                      child: TextFormField(
+                        onTap: (){
+                          showSearch(context: context, delegate: ItemSearch());
+                        },
+                        enableInteractiveSelection: true,
+                        cursorColor: AppColors.black,
+                        cursorHeight: 8.h,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 5),
+                          labelText: "Search",
+                          labelStyle: regularWhite12,
+                          enabled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.h),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.h),
+                          ),
+                          filled: true,
+                          fillColor: AppColors.white.withOpacity(0.2),
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          prefixIcon: Icon(Icons.search),
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.h),
-                        ),
-                        filled: true,
-                        fillColor: AppColors.white.withOpacity(0.2),
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                        prefixIcon: Icon(Icons.search),
                       ),
                     ),
                   ),
@@ -187,7 +189,7 @@ class PharmacyScreen extends StatelessWidget {
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
                                     mainAxisExtent: 250,
-                                    crossAxisSpacing: 30
+                                    crossAxisSpacing: 20,
                                 ),
                                 itemCount: state.catalog.items.length,
                                 itemBuilder: (BuildContext context, int index) {
@@ -229,6 +231,9 @@ class PharmacyScreen extends StatelessWidget {
             )
           ),
           child: CustomAppButton(
+            onTap: (){
+              routeTo(context, CheckoutCartScreen());
+            },
             height: 43.h,
             widget: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -255,6 +260,15 @@ class PharmacyScreen extends StatelessWidget {
                 //     },
                 //   ),
                 // )
+                Container(
+                  height: 18.h,
+                  width: 18.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.amber
+                  ),
+                  child: Center(child: Text("")),
+                )
               ],
             ),
             fillColor: AppColors.lightPeach,
@@ -262,7 +276,7 @@ class PharmacyScreen extends StatelessWidget {
             shapeBorder: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
             ),
-            width: 135.w,),
+            width: 138.w,),
         )
       ),
     );

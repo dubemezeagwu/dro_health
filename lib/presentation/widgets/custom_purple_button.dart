@@ -7,40 +7,33 @@ import '../../utils/styles.dart';
 
 class CustomPurpleButton extends StatelessWidget {
   final VoidCallback? onTap;
-  const CustomPurpleButton({Key? key, this.onTap}) : super(key: key);
+  final Widget widget;
+  final double height;
+  final double width;
+  const CustomPurpleButton({Key? key, this.onTap, required this.widget, required this.height, required this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        width: 364.w,
-        height: 50.h,
-        child: Container(
-          decoration: BoxDecoration(
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.h),
+            gradient: const LinearGradient(
+                colors: [
+                  AppColors.darkPurple,
+                  AppColors.lightPurple
+                ]
+            )
+        ),
+        child: RawMaterialButton(
+            onPressed: onTap,
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.h),
-              gradient: const LinearGradient(
-                  colors: [
-                    AppColors.darkPurple,
-                    AppColors.lightPurple
-                  ]
-              )
-          ),
-          child: RawMaterialButton(
-              onPressed: (){},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.h),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.shopping_cart),
-                  SizedBox(width: 12.w,),
-                  Text("Add to Cart", style: regularWhite14,)
-                ],
-              )
-          ),
+            ),
+            child: widget
         ),
       ),
     );

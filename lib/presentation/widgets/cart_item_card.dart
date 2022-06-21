@@ -7,18 +7,30 @@ import '../../utils/colors.dart';
 import '../../utils/styles.dart';
 
 class CartItemCard extends StatelessWidget {
-  const CartItemCard({Key? key}) : super(key: key);
+  final String image;
+  final String title;
+  final String type;
+  final String dosage;
+  final num price;
+  const CartItemCard({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.type,
+    required this.dosage,
+    required this.price
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Container (
-      height: 270.h,
+      height: 275.h,
       width: 175.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.h),
           border: Border.all(width: 1.0, color: AppColors.lightTextColor),
-          color: Colors.amber
+          color: AppColors.white
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +45,7 @@ class CartItemCard extends StatelessWidget {
                     topLeft: Radius.circular(11.h),
                     topRight: Radius.circular(11.h),
                   ),
-                  child: SvgPicture.asset("assets/images/doliprane2.svg", fit: BoxFit.cover,),
+                  child: Image.asset(image, fit: BoxFit.cover,),
                 ),
               ),
               Positioned(
@@ -54,7 +66,7 @@ class CartItemCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Paracetamol", style: regularBlack16,),
+                  Text(title, style: regularBlack16,),
                   SizedBox(height: 2.h,),
                   SizedBox(
                     width: 103.w,
@@ -62,7 +74,7 @@ class CartItemCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Tablet", style: regularLightBlack14,),
+                        Text(type, style: regularLightBlack14,),
                         Container(
                           height: 3.h,
                           width: 3.w,
@@ -71,7 +83,7 @@ class CartItemCard extends StatelessWidget {
                               color: AppColors.textColor
                           ),
                         ),
-                        Text("500mg", style: regularLightBlack14,)
+                        Text(dosage, style: regularLightBlack14,)
                       ],
                     ),
                   ),
@@ -82,15 +94,21 @@ class CartItemCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("N350.00", style: boldBlack18,),
+                        Text(price.toString(), style: boldBlack18,),
                         Container(
                           height: 32.h,
                           width: 32.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(11.h),
-                              color: AppColors.navItemColor
+                            color: AppColors.lightIconPurple
                           ),
-                          child: Icon(Icons.heart_broken,size: 20,),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: SvgPicture.asset(
+                              "assets/images/heart.svg",
+                              color: AppColors.iconPurple,
+                            ),
+                          ),
                         ),
                       ],
                     ),

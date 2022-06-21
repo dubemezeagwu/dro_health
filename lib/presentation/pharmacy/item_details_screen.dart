@@ -28,7 +28,14 @@ class ItemDetailsScreen extends StatefulWidget {
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    final cartBloc = BlocProvider.of<CartBloc>(context);
+    final item = Item(
+        title: "Paracetamol",
+      image: "assets/images/paracetamol.png",
+      type: "Tablet",
+      dosage: "500mg",
+      price: 500,
+      requiresPrescription: true
+    );
     SizeConfig.init(context);
     return Scaffold(
       body: CustomScrollView(
@@ -325,8 +332,18 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                               return CircularProgressIndicator();
                             }
                             if (state is CartLoaded){
-                              final itemsInCart = state.cart.items.contains(widget.item!.title);
+                              final itemsInCart = state.cart!.items.contains(widget.item!.title);
                               return CustomPurpleButton(
+                                  width: 364.w,
+                                  height: 50.h,
+                                widget: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.shopping_cart, color: AppColors.white,),
+                                    SizedBox(width: 12.w,),
+                                    Text("Add to Cart", style: regularWhite14,)
+                                  ],
+                                ),
                                 onTap: (){
                                   context.read<CartBloc>().add(AddToCart(item: widget.item!));
                                 }
@@ -334,7 +351,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                             }
                             return Text("Something went wrong");
                           },
-                        )
+                        ),
+                        SizedBox(height: 20.h,)
                       ],
                     ),
                   )

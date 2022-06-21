@@ -10,7 +10,7 @@ class CartInitial extends CartState {
 }
 
 class CartLoaded extends CartState {
-  final Cart cart;
+  final Cart? cart;
   CartLoaded ({this.cart = const Cart()});
 
   @override

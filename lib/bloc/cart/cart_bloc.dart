@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dro_health/data/repository/shop_repository.dart';
@@ -29,11 +28,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   void _onItemAdded (AddToCart event, Emitter<CartState> emit) async {
+    // print(event.item.title);
     final state = this.state;
+    // emit(CartLoaded());
+    // testCart.add(event.item);
+    // print("Test Cart: ${testCart}");
     if (state is CartLoaded){
       try {
         cartRepository.addItemToCart(event.item);
-        emit (CartLoaded(cart: Cart(items: [...state.cart.items, event.item])));
+        emit (CartLoaded(cart: Cart(items: [...state.cart!.items, event.item])));
       } catch (_){
         emit (CartError());
       }
@@ -45,10 +48,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if(state is CartLoaded){
       try {
         cartRepository.removeItemFromCart(event.item);
-        emit(CartLoaded(cart: Cart(items: [...state.cart.items]..remove(event.item))));
+        emit(CartLoaded(cart: Cart(items: [...state.cart!.items]..remove(event.item))));
       } catch (_){
 
       }
     }
+    // emit(CartLoaded());
+    // testCart.remove(event.item);
   }
 }
+
+// final testCart = <Item>[];

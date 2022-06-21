@@ -9,6 +9,7 @@ class CustomAppButton extends StatefulWidget {
   final double height,width;
   final Color fillColor, borderLineColor;
   final ShapeBorder shapeBorder;
+  final VoidCallback onTap;
   final Widget widget;
   const CustomAppButton({
     Key? key,
@@ -17,7 +18,8 @@ class CustomAppButton extends StatefulWidget {
     required this.shapeBorder,
     required this.fillColor,
     required this.borderLineColor,
-    required this.widget}) : super(key: key);
+    required this.widget,
+    required this.onTap}) : super(key: key);
 
   @override
   State<CustomAppButton> createState() => _CustomAppButtonState();
@@ -31,7 +33,7 @@ class _CustomAppButtonState extends State<CustomAppButton> {
       height: widget.height,
       width: widget.width,
       child: RawMaterialButton(
-        onPressed: (){},
+        onPressed: widget.onTap,
         fillColor: widget.fillColor,
         shape: widget.shapeBorder,
         child: widget.widget
